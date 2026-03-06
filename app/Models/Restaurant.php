@@ -34,6 +34,7 @@ class Restaurant extends Model
         'is_active',
         'theme_color',
         'menu_style',
+        'default_language',
         'settings',
     ];
 

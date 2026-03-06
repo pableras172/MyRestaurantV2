@@ -99,10 +99,35 @@
                         <span class="bar3"></span>
                     </button>
 
+                    <!-- Language Selector (Mobile - centered) -->
+                    <div class="lg:hidden flex items-center justify-center h-[64px] absolute left-1/2 transform -translate-x-1/2">
+                        <div class="relative">
+                            <select id="language-selector-mobile" 
+                                    class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors">
+                                <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>ES</option>
+                                <option value="ca" {{ app()->getLocale() == 'ca' ? 'selected' : '' }}>CA</option>
+                                <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>EN</option>
+                            </select>
+                            <i class="flaticon-down-arrow absolute right-2 top-1/2 transform -translate-y-1/2 text-xs pointer-events-none"></i>
+                        </div>
+                    </div>
+
                     <!-- EXTRA NAV -->
                     <div class="extra-nav float-right items-center h-[64px] lg:flex relative hidden pl-[70px]">
                         <div class="extra-cell flex items-center">
                             <ul class="flex items-center gap-[10px]">
+                                <!-- Language Selector (Desktop) -->
+                                <li class="inline-block">
+                                    <div class="relative">
+                                        <select id="language-selector-desktop" 
+                                                class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 h-[45px] text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors shadow-[0_10px_10px_0_rgba(0,0,0,0.1)]">
+                                            <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>🇪🇸 Español</option>
+                                            <option value="ca" {{ app()->getLocale() == 'ca' ? 'selected' : '' }}>🇪🇸 Català</option>
+                                            <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>🇬🇧 English</option>
+                                        </select>
+                                        <i class="flaticon-down-arrow absolute right-2 top-1/2 transform -translate-y-1/2 text-xs pointer-events-none"></i>
+                                    </div>
+                                </li>
                                 @if ($restaurant->phone_1)
                                     <li class="inline-block">
                                         <a href="tel:{{ $restaurant->phone_1 }}"
@@ -374,6 +399,20 @@
     <script src="{{ asset('template/js/dznav-init.js') }}"></script>
 
     <script>
+        // Language selector functionality
+        function changeLanguage(lang) {
+            // Cambiar el idioma mediante una petición a Laravel
+            window.location.href = '{{ url("/") }}/' + lang + window.location.pathname.replace(/^\/(es|ca|en)/, '');
+        }
+
+        // Event listeners para ambos selectores
+        document.getElementById('language-selector-mobile')?.addEventListener('change', function() {
+            changeLanguage(this.value);
+        });
+
+        document.getElementById('language-selector-desktop')?.addEventListener('change', function() {
+            changeLanguage(this.value);
+        });
 
         function shareRestaurant(event) {
             event.preventDefault();

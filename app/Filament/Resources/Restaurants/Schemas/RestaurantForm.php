@@ -91,6 +91,17 @@ class RestaurantForm
                                             ->required()
                                             ->helperText('Selecciona cómo se mostrará el menú en la web pública')
                                             ->native(false),
+                                        Select::make('default_language')
+                                            ->label('Idioma por Defecto')
+                                            ->options([
+                                                'es' => 'Español',
+                                                'ca' => 'Català',
+                                                'en' => 'English',
+                                            ])
+                                            ->default('es')
+                                            ->required()
+                                            ->helperText('Idioma predeterminado para mostrar el menú en la web pública')
+                                            ->native(false),
                                     ])
                                     ->columns(2),
                             ]),
