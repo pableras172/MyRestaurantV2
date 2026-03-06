@@ -404,7 +404,7 @@
             // Crear un formulario para hacer POST y cambiar el idioma
             const form = document.createElement('form');
             form.method = 'POST';
-            form.action = '{{ route("public.language.change") }}';
+            form.action = '/change-language';
             
             const csrfInput = document.createElement('input');
             csrfInput.type = 'hidden';
