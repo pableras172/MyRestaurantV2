@@ -84,17 +84,17 @@
                         
                         <!-- Allergens -->
                         @if($product->allergens->count() > 0)
-                        <div class="flex flex-wrap gap-2 items-center">
+                        <div class="flex flex-wrap gap-1 items-center mt-2">
                             @foreach($product->allergens as $allergen)
                                 @if($allergen->photo)
                                     <div class="relative group">
                                         <img src="{{ asset('storage/' . $allergen->photo) }}" 
                                              alt="{{ $allergen->name }}" 
-                                             class="w-8 h-8 rounded-full object-cover border-2 border-red-200"
+                                             class="w-5 h-5 rounded-full object-cover border border-gray-300"
                                              title="{{ $allergen->name }}">
                                     </div>
                                 @else
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-red-100 text-red-800">
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] bg-gray-100 text-gray-700 border border-gray-300">
                                         {{ $allergen->name }}
                                     </span>
                                 @endif
