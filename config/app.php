@@ -56,6 +56,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Domain
+    |--------------------------------------------------------------------------
+    |
+    | This value is the base domain for your application. It's used for
+    | multi-tenant subdomain functionality. Example: myrestaurant.pro
+    | Subdomains will be: {tenant}.myrestaurant.pro
+    |
+    */
+
+    'domain' => env('APP_DOMAIN'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------
     |
