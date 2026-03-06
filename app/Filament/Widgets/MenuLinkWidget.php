@@ -15,7 +15,18 @@ class MenuLinkWidget extends Widget
     public function getMenuUrl(): ?string
     {
         $tenant = \Filament\Facades\Filament::getTenant();
-        return $tenant ? route('public.menu.index', ['restaurant' => $tenant->slug]) : null;
+        
+        if (!$tenant) {
+            return null;
+        }
+        
+        // En producción usar subdominio, en local usar slug en URL
+        if (config('app.env') === 'production' && config('app.domain')) {
+            return 'https://' . $tenant->slug . '.' . config('app.domain');
+        }
+        
+        // En desarrollo local usar slug en la URL
+        return route('public.menu.index', ['restaurant' => $tenant->slug]);
     }
 
     public function getRestaurantName(): ?string

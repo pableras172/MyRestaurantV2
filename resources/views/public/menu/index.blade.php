@@ -25,7 +25,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-row">
                     <ul
                         class="breadcrumb bg-primary shadow-[0px_10px_20px_rgba(0,0,0,0.05)] rounded-[10px] inline-block lg:py-[13px] md:py-[10px] sm:py-[5px] py-[7px] lg:px-[30px] md:px-[18px] sm:px-5 px-3.5 m-0">
-                        <a href="{{ route('public.menu.index', ['restaurant' => $currentRestaurant->slug]) }}" class="text-white">Inicio</a>
+                        <a href="{{ menu_url($currentRestaurant) }}" class="text-white">Inicio</a>
                         <li class="breadcrumb-item text-white p-0 inline-block text-[15px] font-normal active pl-2">Menú
                             1</li>
                     </ul>
