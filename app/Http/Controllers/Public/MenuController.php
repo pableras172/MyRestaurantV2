@@ -66,7 +66,8 @@ class MenuController extends Controller
         $categoriesWithProducts = [];
         if ($principalMenu && $principalMenu->dishTypes) {
             foreach ($principalMenu->dishTypes as $category) {
-                $products = Product::where('restaurant_id', $currentRestaurant->id)
+                // Verificar si la categoría tiene productos directamente
+                $categoryProducts = Product::where('restaurant_id', $currentRestaurant->id)
                     ->where('is_active', true)
                     ->where('is_available', true)
                     ->whereHas('dishTypes', function ($query) use ($category) {
@@ -76,11 +77,42 @@ class MenuController extends Controller
                     ->orderBy('sort_order')
                     ->get();
                 
-                if ($products->count() > 0) {
+                // Si la categoría padre tiene productos, agregarla
+                if ($categoryProducts->count() > 0) {
                     $categoriesWithProducts[] = [
                         'category' => $category,
-                        'products' => $products
+                        'products' => $categoryProducts,
+                        'is_parent' => true
                     ];
+                }
+                
+                // Obtener subcategorías (categorías hijas)
+                $subcategories = DishType::where('restaurant_id', $currentRestaurant->id)
+                    ->where('parent_id', $category->id)
+                    ->where('is_active', true)
+                    ->orderBy('sort_order')
+                    ->get();
+                
+                // Para cada subcategoría, obtener sus productos
+                foreach ($subcategories as $subcategory) {
+                    $subcategoryProducts = Product::where('restaurant_id', $currentRestaurant->id)
+                        ->where('is_active', true)
+                        ->where('is_available', true)
+                        ->whereHas('dishTypes', function ($query) use ($subcategory) {
+                            $query->where('dish_types.id', $subcategory->id);
+                        })
+                        ->with(['allergens', 'variants'])
+                        ->orderBy('sort_order')
+                        ->get();
+                    
+                    if ($subcategoryProducts->count() > 0) {
+                        $categoriesWithProducts[] = [
+                            'category' => $subcategory,
+                            'products' => $subcategoryProducts,
+                            'is_parent' => false,
+                            'parent_category' => $category
+                        ];
+                    }
                 }
             }
         }

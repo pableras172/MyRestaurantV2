@@ -46,7 +46,14 @@
         <div class="xl:w-1/3 md:w-1/2 w-full px-[15px]">
             @foreach($columnCategories as $item)
                 <div class="menu-head mb-[25px] text-center category-{{ $item['category']->id }} menu-item">
-                    <h4 class="title text-[34px] font-normal text-primary">{{ $item['category']->name }}</h4>
+                    @if(isset($item['parent_category']))
+                        {{-- Categoría hija: mostrar padre → hija --}}
+                        <h5 class="text-[18px] font-normal text-gray-600 mb-1">{{ $item['parent_category']->name }}</h5>
+                        <h4 class="title text-[28px] font-normal text-primary">{{ $item['category']->name }}</h4>
+                    @else
+                        {{-- Categoría padre --}}
+                        <h4 class="title text-[34px] font-normal text-primary">{{ $item['category']->name }}</h4>
+                    @endif
                     @if($item['category']->description)
                         <p class="text-[15px] text-bodycolor mt-2">{{ $item['category']->description }}</p>
                     @endif
@@ -90,7 +97,7 @@
                                     <div class="relative group">
                                         <img src="{{ asset('storage/' . $allergen->photo) }}" 
                                              alt="{{ $allergen->name }}" 
-                                             class="w-5 h-5 rounded-full object-cover border border-gray-300"
+                                             class="w-6 h-6 rounded-full object-cover"
                                              title="{{ $allergen->name }}">
                                     </div>
                                 @else
