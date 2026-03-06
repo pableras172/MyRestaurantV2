@@ -4,6 +4,19 @@ use App\Http\Controllers\Public\MenuController;
 use App\Http\Middleware\IdentifyPublicTenant;
 use Illuminate\Support\Facades\Route;
 
+// Ruta para cambiar idioma (sin middleware, disponible globalmente)
+Route::post('/change-language', function () {
+    $locale = request()->input('locale', 'es');
+    $redirect = request()->input('redirect', url('/'));
+    
+    // Validar que el idioma sea uno de los soportados
+    if (in_array($locale, ['es', 'ca', 'en'])) {
+        session(['locale' => $locale]);
+    }
+    
+    return redirect($redirect);
+})->name('public.language.change');
+
 // Rutas de desarrollo local (con slug en la URL)
 Route::prefix('{restaurant:slug}')->middleware(IdentifyPublicTenant::class)->group(function () {
     Route::get('/', [MenuController::class, 'index'])->name('public.menu.index');

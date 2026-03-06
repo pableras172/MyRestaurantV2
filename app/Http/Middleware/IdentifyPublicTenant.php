@@ -50,8 +50,15 @@ class IdentifyPublicTenant
         // Compartir el restaurante con todas las vistas
         view()->share('restaurant', $restaurant);
         
-        // Establecer el idioma de la aplicación según el restaurante
-        $locale = $restaurant->default_language ?? config('app.locale');
+        // Establecer el idioma de la aplicación
+        // Prioridad: 1. Sesión del usuario, 2. Default del restaurante, 3. Config de la app
+        $locale = session('locale') ?? $restaurant->default_language ?? config('app.locale');
+        
+        // Validar que el idioma sea uno de los soportados
+        if (!in_array($locale, ['es', 'ca', 'en'])) {
+            $locale = config('app.locale');
+        }
+        
         app()->setLocale($locale);
         
         // Guardar en el request para acceso en controladores

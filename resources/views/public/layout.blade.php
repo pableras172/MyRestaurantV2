@@ -91,16 +91,8 @@
                         @endif
                     </div>
 
-                    <!-- Toggle button -->
-                    <button
-                        class="togglebtn lg:hidden block bg-primary w-[45px] h-[45px] relative rounded-md float-right mt-2">
-                        <span class="bar1"></span>
-                        <span class="bar2"></span>
-                        <span class="bar3"></span>
-                    </button>
-
-                    <!-- Language Selector (Mobile - centered) -->
-                    <div class="lg:hidden flex items-center justify-center h-[64px] absolute left-1/2 transform -translate-x-1/2">
+                    <!-- Language Selector (Mobile - between logo and toggle) -->
+                    <div class="lg:hidden flex items-center h-[64px] float-left ml-4">
                         <div class="relative">
                             <select id="language-selector-mobile" 
                                     class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors">
@@ -111,6 +103,14 @@
                             <i class="flaticon-down-arrow absolute right-2 top-1/2 transform -translate-y-1/2 text-xs pointer-events-none"></i>
                         </div>
                     </div>
+
+                    <!-- Toggle button -->
+                    <button
+                        class="togglebtn lg:hidden block bg-primary w-[45px] h-[45px] relative rounded-md float-right mt-2">
+                        <span class="bar1"></span>
+                        <span class="bar2"></span>
+                        <span class="bar3"></span>
+                    </button>
 
                     <!-- EXTRA NAV -->
                     <div class="extra-nav float-right items-center h-[64px] lg:flex relative hidden pl-[70px]">
@@ -401,8 +401,32 @@
     <script>
         // Language selector functionality
         function changeLanguage(lang) {
-            // Cambiar el idioma mediante una petición a Laravel
-            window.location.href = '{{ url("/") }}/' + lang + window.location.pathname.replace(/^\/(es|ca|en)/, '');
+            // Crear un formulario para hacer POST y cambiar el idioma
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '{{ route("public.language.change") }}';
+            
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = '_token';
+            csrfInput.value = '{{ csrf_token() }}';
+            
+            const langInput = document.createElement('input');
+            langInput.type = 'hidden';
+            langInput.name = 'locale';
+            langInput.value = lang;
+            
+            const redirectInput = document.createElement('input');
+            redirectInput.type = 'hidden';
+            redirectInput.name = 'redirect';
+            redirectInput.value = window.location.href;
+            
+            form.appendChild(csrfInput);
+            form.appendChild(langInput);
+            form.appendChild(redirectInput);
+            
+            document.body.appendChild(form);
+            form.submit();
         }
 
         // Event listeners para ambos selectores
