@@ -1,0 +1,172 @@
+/* News & blog */
+
+.swiper .swiper-slide {
+    transition: all 0.5s;
+}
+
+.swiper-item-4 .swiper-slide {
+    opacity: 0 !important;
+}
+.swiper-item-4 .swiper-slide-active, .swiper-item-4 .swiper-slide-next, .swiper-item-4 .swiper-slide-next + .swiper-slide, .swiper-item-4 .swiper-slide-next + .swiper-slide + .swiper-slide {
+    opacity: 1 !important;
+}
+.overflow-unset {
+    overflow: unset;
+}
+/* Our blog */
+.dz-card.blog-half .dz-date {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 15px;
+    margin-right: 0;
+    text-transform: uppercase;
+    display: block;
+    transition: all 0.8s;
+}
+
+.dz-card.blog-half .dz-meta ul li {
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    margin-right: 35px;
+    display: inline-block;
+}
+.dz-card.blog-half .dz-meta ul li:not(:last-child)::after {
+    content: "";
+    height: 6px;
+    width: 6px;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    border-radius: 50%;
+    background-color: var(--primary);
+    transform: translate(0%, -50%);
+}
+.dz-card.style-3 {
+    background-size: cover;
+    object-fit: cover;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+    background-position: center;
+}
+.dz-card.style-3 .dz-info .dz-meta ul li:not(:last-child)::after {
+    content: "";
+    height: 6px;
+    width: 6px;
+    position: absolute;
+    right: -17%;
+    top: 50%;
+    border-radius: 50%;
+    background-color: var(--primary);
+    transform: translate(0%, -50%);
+}
+.dz-card.style-3::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(359.53deg, #222 0.4%, rgba(34, 34, 34, 0) 99.59%);
+}
+@screen max-lg {
+    .dz-card.blog-half .dz-meta ul li:not(:last-child)::after {
+        display: none;
+   }
+}
+/* Our blog End */
+/* Blog page */
+.site-header-2 {
+    position: relative;
+}
+.overlay-shine .dz-media::before {
+    position: absolute;
+    top: 0;
+    left: -85%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    transition: all 0.5s;
+}
+.overlay-shine:hover .dz-media::before {
+    animation: shine 0.75s;
+}
+.breadcrumb-row.style-1 ul .breadcrumb-item + .breadcrumb-item::before {
+    content: "\f105";
+    color: var(--primary);
+    font-weight: 700;
+    font-family: 'Line Awesome Free';
+    font-size: 15px;
+    padding-right: 10px;
+    top: 0px;
+    position: relative;
+}
+blockquote.wp-block-quote::after {
+    content: "";
+    width: 5px;
+    height: 110px;
+    border-radius: 50px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary);
+    position: absolute;
+    box-shadow: 0 0 30px 0 var(--bg-light);
+}
+.blog-single .dz-post-text::after {
+    content: "";
+    display: block;
+    width: 100%;
+    clear: both;
+}
+.alignfullwide {
+    margin-left: calc(50% - 15px - calc(50vw - 30px) - (var(--content-share-ml,0px)/2));
+    width: calc(100vw - 30px);
+    max-width: calc(100vw - 30px);
+    box-sizing: border-box;
+}
+.alignwide {
+    margin-left: calc(-6.25rem - (0.313rem/2));
+    margin-right: calc(-6.25rem - (0.313rem/2));
+    width: calc(100% + 12.5rem + 0.313rem);
+    max-width: initial;
+}
+.alignwide .wp-block-image {
+    width: calc(33.33333% - 1.875rem);
+    margin: 0 var(--gallery-block--gutter-size, 15px) var(--gallery-block--gutter-size, 15px) 0;
+}
+.swiper-pagination.style-1 .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 1;
+    border-radius: 30px;
+    background: #fff;
+    border: 1px solid var(--primary);
+    display: inline-block;
+}
+.swiper-pagination.style-1 .swiper-pagination-bullet-active {
+    background: var(--primary);
+}
+@screen max-xl {
+    .alignwide .wp-block-image {
+        width: calc(50% - 10px);
+        margin: 0 var(--gallery-block--gutter-size, 10px) var(--gallery-block--gutter-size, 10px) 0;
+   }
+    .alignwide {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+   }
+}
+/* Blog page End */

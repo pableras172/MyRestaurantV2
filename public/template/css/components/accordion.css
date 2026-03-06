@@ -1,0 +1,53 @@
+.dz-accordion .accordion-header .accordion-button .toggle-close {
+    content: "";
+    background-color: transparent;
+    height: 28px;
+    width: 28px;
+    display: flex;
+    border: 2px solid #000;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0px;
+    line-height: 28px;
+    text-align: center;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+    z-index: 1;
+    overflow: hidden;
+}
+.dz-accordion .accordion-header .accordion-button .toggle-close:before {
+    content: "\2b";
+    color: #000;
+    transition: all 0.5s;
+    font-size: 18px;
+    font-family: 'Font Awesome 5 Free';
+    z-index: 99;
+    opacity: 1;
+    transition: all 0.5s;
+    display: block;
+    font-weight: 900;
+}
+.dz-accordion .accordion-header .accordion-button:not(.collapsed) .toggle-close:before {
+    transition: all 0.5s;
+    content: "\f068" !important;
+}
+.dz-accordion .accordion-header .accordion-button:not(.collapsed){
+    padding-bottom: 0 !important;
+    transition: 0.5;
+}
+.dz-accordion .accordion-collapse {
+    display: none;
+}
+.faq-media {
+    animation: move2 5s infinite;
+}
+@screen max-lg {
+    .dz-accordion .accordion-header .accordion-button .toggle-close {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+   }
+}

@@ -1,0 +1,11 @@
+/* dz-bnr-inr */
+.breadcrumb-row ul .breadcrumb-item + .breadcrumb-item::before {
+    content: "\f105";
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Line Awesome Free';
+    font-size: 15px;
+    padding-right: 10px;
+    top: 0px;
+    position: relative;
+}

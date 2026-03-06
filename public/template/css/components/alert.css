@@ -1,0 +1,55 @@
+.alert-danger {
+    --bs-alert-color: #cc0002;
+    --bs-alert-bg: #ffcccd;
+    --bs-alert-border: #ff999a;
+}
+.alert-success {
+    --bs-alert-color: #027e5e;
+    --bs-alert-bg: #ccece4;
+    --bs-alert-border: #9ad8c8;
+}
+.alert-info {
+    --bs-alert-color: #087990;
+    --bs-alert-bg: #cff4fc;
+    --bs-alert-border: #9eeaf9;
+}
+.alert-warning {
+    --bs-alert-color: #998b0b;
+    --bs-alert-bg: #fffad0;
+    --bs-alert-border: #fff5a1;
+}
+.alert-primary {
+    --bs-alert-color: #20186f;
+    --bs-alert-bg: #d4d2e8;
+    --bs-alert-border: #a9a5d1;
+}
+.alert-secondary {
+    --bs-alert-color: #6c757d;
+    --bs-alert-bg: #f8f9fa;
+    --bs-alert-border: #e9ecef;
+}
+.alert {
+    padding: 1rem;
+    color: var(--bs-alert-color);
+    background-color: var(--bs-alert-bg);
+    border: 1px solid var(--bs-alert-border);
+    border-radius: 6px;
+}
+@media only screen and (max-width: 1199px){
+    .dzFormMsg, .dzSubscribeMsg {
+        right: 9%;
+        bottom: 17px;
+    }
+}
+@media only screen and (max-width: 767px){
+    .dzFormMsg, .dzSubscribeMsg {
+        right: 5%;
+        bottom: 18%;
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 575px){
+    .dzFormMsg, .dzSubscribeMsg {
+        bottom: 10%;
+    }
+}

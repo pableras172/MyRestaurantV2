@@ -1,0 +1,20 @@
+/* Advertisement Box */
+.offer-label img {
+    animation: dzRotate360 10s linear infinite !important;
+}
+/* Advertisement Box End*/
+@screen max-lg{
+    .adv-box.style-3 .adv-content {
+        padding: 30px 14px 30px 160px !important;
+    }
+}
+@screen max-md{
+    .adv-box.style-3 .adv-content {
+        padding: 30px 14px 30px 265px !important; 
+    }
+}
+@screen max-sm {
+    .adv-box.style-3 .adv-content {
+        padding: 25px 14px 25px 162px !important;
+    }
+}

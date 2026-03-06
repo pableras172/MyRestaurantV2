@@ -1,0 +1,28 @@
+/* under Maintenance Page */
+.under-construction .construction-media:after {
+    position: absolute;
+    content: "";
+    top: -15vw;
+    left: 10vw;
+    z-index: -1;
+    width: 50vw;
+    height: 50vw;
+    background: var(--secondary);
+    opacity: 0.2;
+    border-radius: 100%;
+}
+.under-construction .particles-js-canvas-el {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+@media only screen and (max-width: 567px) {
+    .under-construction .construction-media {
+        margin-top: 30px;
+   }
+    .under-construction .construction-media:after {
+        display: none;
+   }
+}
+/* under Maintenance Page End */

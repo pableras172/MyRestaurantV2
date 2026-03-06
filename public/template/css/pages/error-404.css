@@ -1,0 +1,17 @@
+/* error-page */
+.error-page:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(38, 38, 38, 0.8);
+    top: 0;
+    left: 0;
+}
+.error-page .particles-js-canvas-el {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    top: 0;
+}
+/* error-page End */

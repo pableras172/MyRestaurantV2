@@ -1,0 +1,106 @@
+/* Footer */
+.map-iframe.style-1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    mix-blend-mode: color;
+    z-index: 0;
+    pointer-events: none;
+}
+/* Footer start */
+.site-footer .footer-bg-wrapper .particles-js-canvas-el {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+.dzSubscribe .input-group input[type=text] {
+    border: 1px solid #dddddd;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #666666;
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+    border-radius: 6px;
+}
+.widget_getintuch ul li {
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 40px;
+    color: #000;
+}
+.widget_getintuch ul li i {
+    position: absolute;
+    font-size: 30px;
+    line-height: 1;
+    left: 0;
+    top: 5px;
+    color: var(--primary);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+.widget_getintuch ul li p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #CCCCCC;
+}
+.site-footer .widget_services ul li {
+    padding-bottom: 15px;
+    color: #fff;
+}
+.site-footer .widget_services ul li a {
+    font-size: 15px;
+    color: #CCCCCC;
+}
+.widget_services li a span {
+    position: relative;
+}
+.open {
+    left: 0 !important;
+}	
+.widget_services li a span:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    background-color: var(--primary);
+    bottom: 0;
+    right: 0;
+    width: 0;
+    transition: all 0.5s;
+}
+.widget_services ul li a:hover {
+    color: var(--primary);
+    transition: all 0.5s;
+}
+.widget_services li a:hover span:after {
+    width: 100%;
+    left: 0;
+    right: auto;
+}
+.anim-logo-white:after {
+    content: "";
+    animation-duration: 1.8s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-name: swigo-logo;
+    background-image: url(../images/pan2.png);
+    height: 12px;
+    width: 38px;
+    position: absolute;
+    top: -4px;
+    left: 3px;
+    background-repeat: no-repeat;
+}
+.bg-heart.heart-blast {
+    background-position: -1680px 0;
+    transition: background 1s steps(28);
+}
+/* Footer end */

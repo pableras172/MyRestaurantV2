@@ -1,0 +1,73 @@
+/* Touchspin */
+input,
+textarea {
+border: 1px solid #eeeeee;
+box-sizing: border-box;
+margin: 0;
+outline: none;
+padding: 10px;
+}
+
+input[type="button"] {
+-webkit-appearance: button;
+cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+}
+
+.input-group {
+/* clear: both;
+margin: 15px 0; */
+position: relative;
+}
+
+.input-group input[type='button'] {
+    padding: 0px;
+    min-width: 26px;
+    text-align: center;
+    line-height: 26px;
+    z-index: 1;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+    border-radius: 4px;
+    justify-content: center;
+    display: inline-flex;
+}
+
+.input-group .quantity-field {
+    
+    height: 31px;
+    width: 105px;
+    padding: 0;
+    text-align: center;
+    z-index: 1 !important;
+    background-color: #EAEAEA;
+    border: 2px solid #EAEAEA;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 0 !important;
+    border-radius: 4px;
+    color: #000;
+    margin-left: 0 !important
+}
+
+input[type="number"] {
+-moz-appearance: textfield;
+-webkit-appearance: none;
+}
+
+.widget.dz-widget_services .form-check .form-check-input:checked {
+    background-color: var(--primary);
+    border: 1px solid var(--primary) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+.form-check-input:checked {
+    background-color: var(--primary);
+    border: 1px solid var(--primary) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}

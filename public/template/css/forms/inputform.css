@@ -1,0 +1,29 @@
+/* Contact Us Page */
+.input-line.input-black::before, .input-line.input-black::after {
+    content: "";
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 25px;
+    transition: all 0.2s;
+}
+.input-line.input-black::after {
+    width: 100%;
+    background-color: #000;
+    opacity: 0.1;
+    box-shadow: 10px 10px 20px 0 rgba(0, 7, 66, 0.2);
+}
+.input-line.input-black::before {
+    width: 0;
+    background-color: #000;
+    transform: translateX(-50%);
+    left: 50%;
+}
+.input-line.input-black:hover::before,
+ .input-line.input-black:focus::before, 
+ .input-line.input-black:active::before, 
+ .input-line.input-black.focused::before {
+    width: 100%;
+}
+/* Contact Us Page End */

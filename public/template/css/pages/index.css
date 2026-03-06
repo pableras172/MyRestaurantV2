@@ -1,0 +1,11 @@
+.dzFormMsg, .dzSubscribeMsg {
+    position: fixed;
+    right: 5%;
+    bottom: 20px;
+    z-index: 9999999;
+}
+.dzFormMsg .alert, .dzSubscribeMsg .alert {
+    margin: 0;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}

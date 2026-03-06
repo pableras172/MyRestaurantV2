@@ -1,0 +1,167 @@
+#bg {
+	background-attachment: fixed;
+	background-size: cover;
+}
+.main-bar-wraper.sticky-no {
+	transition: all 0.5s;
+}
+.main-bar-wraper.sticky-no {
+	position: relative !important;
+	box-shadow: none;
+	animation: none;
+}
+.main-bar-wraper.sticky-no ~ .main-bnr-2 {
+	transform: translate(0) !important;
+	margin-bottom: 0 !important;
+}
+.page-wraper {
+	background-color: #fff;
+}
+@media only screen and (min-width: 1281px) {
+   /* boxed */
+	[data-layout="boxed"] .page-wraper {
+		max-width: 1280px;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+   }
+	[data-layout="boxed"] .sticky-header {
+		transform: translateX(-50%);
+		left: 50% !important;
+		max-width: 1280px;
+   }
+	[data-layout="boxed"] .site-header.style-2 {
+		--headerspacing: 0 50px;
+   }
+	[data-layout="boxed"] .main-bnr-one .banner-inner .banner-content h1 {
+		font-size: 70px;
+		line-height: 80px;
+   }
+	[data-layout="boxed"] .main-bnr-one .banner-inner .garlic {
+		right: -135px;
+   }
+	[data-layout="boxed"] .main-bnr-one .slider-pagination {
+		right: 0 !important;
+		left: auto !important;
+   }
+	[data-layout="boxed"] .main-bnr-one .slider-pagination .swiper-pagination-bullet, [data-layout="boxed"] .main-bnr-one .slider-pagination .main-button-prev, [data-layout="boxed"] .main-bnr-one .slider-pagination .main-button-next {
+		color: #fff !important;
+   }
+	[data-layout="boxed"] .swiper-btn-lr .btn-prev-long, [data-layout="boxed"] .swiper-btn-lr .btn-prev {
+		left: -30px;
+   }
+	[data-layout="boxed"] .swiper-btn-lr .btn-next-long, [data-layout="boxed"] .swiper-btn-lr .btn-next {
+		right: -30px;
+   }
+	[data-layout="boxed"] .section-wrapper-2 .bg1 {
+		width: 22vw !important;
+   }
+	[data-layout="boxed"] .section-wrapper-2 .bg2 {
+		top: 20px !important;
+		right: 0px !important;
+   }
+	[data-layout="boxed"] .section-wrapper-2.right .bg1 {
+		width: 22vw !important;
+		right: -306px !important;
+   }
+	[data-layout="boxed"] .main-bnr-two .banner-inner .banner-content h1 {
+		font-size: 70px;
+		line-height: 80px;
+   }
+	[data-layout="boxed"] .section-wrapper-5, [data-layout="boxed"] .section-wrapper-4, [data-layout="boxed"] .section-wrapper-8 {
+		margin-left: 20px;
+		margin-right: 20px;
+   }
+	[data-layout="boxed"] .site-footer.style-1 .bg1 {
+		left: -114px !important;
+		bottom: -36px !important;
+		width: 10vw !important;
+   }
+	[data-layout="boxed"] .site-footer.style-1 .bg2 {
+		right: -18px;
+   }
+	[data-layout="boxed"] .site-footer.style-2 .footer-bg-wrapper {
+		margin-left: 20px;
+		margin-right: 20px;
+   }
+	[data-layout="boxed"] .site-footer.style-3 .bg1 {
+		left: -115px !important;
+		bottom: 110px !important;
+   }
+	[data-layout="boxed"] .site-footer.style-3 .bg2 {
+		top: -50px !important;
+		right: 0 !important;
+   }
+	[data-layout="boxed"] .under-construction .construction-media::after {
+		left: 50px;
+   }
+	[data-layout="boxed"] .under-construction .construction-media img {
+		left: 40px;
+   }
+	[data-layout="boxed"] .section-wrapper-5 .bg1 {
+		top: 0;
+		left: -190px;
+   }
+	[data-layout="boxed"] .section-wrapper-5 .bg2 {
+		width: 30vw;
+		right: 80px;
+   }
+	[data-layout="boxed"] .section-wrapper-7 .bg1 {
+		top: 9px !important;
+		width: 10vw !important;
+		left: -106px !important;
+   }
+	[data-layout="boxed"] .section-wrapper-7 .bg2 {
+		width: 30vw !important;
+		right: -80px !important;
+   }
+	[data-layout="boxed"] .section-wrapper-7::after {
+		width: 550px !important;
+		height: 550px !important;
+		right: -12% !important;
+   }
+	[data-layout="boxed"] .icon-bx-wraper.style-5 .icon-content {
+		padding: 90px 15px 40px !important;
+   }
+	[data-layout="frame"] {
+		padding: 30px;
+   }
+
+    /* Frame */
+	[data-layout="frame"] .page-wraper {
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+		height: auto !important;
+   }
+	[data-layout="frame"] .is-fixed .main-bar {
+		left: 0;
+		width: 100%;
+		margin: 0;
+		position: unset;
+   }
+	[data-layout="frame"] button.scroltop {
+		right: 50px;
+		bottom: 50px;
+   }
+}
+@media only screen and (max-width: 1281px) {
+	[data-layout="frame"] {
+		padding: 0 !important;
+   }
+	[data-layout="frame"] button.scroltop {
+		right: 15px;
+		bottom: 15px;
+   }
+}
+.theme-sharped {
+	--border-radius-base: 0;
+}
+.theme-rounded {
+	--border-radius-base: 10px;
+}
+.theme-bg-color {
+	background-color: var(--theme-bg-color);
+}

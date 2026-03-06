@@ -1,0 +1,54 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* base */
+@import "base/reset.css";
+
+/* switcher */
+@import "theme/skin.css";
+@import "theme/bg-color.css";
+@import "theme/setting.css";
+
+/* layout css */
+@import "layout/header.css";
+@import "layout/banner/banner-1.css";
+@import "layout/banner/banner-2.css";
+@import "layout/banner/banner-3.css";
+@import "layout/banner/default.css";
+@import "layout/footer.css";
+
+/* components */
+@import "components/button.css";
+@import "components/offcanvas.css";
+@import "components/nice-select.css";
+@import "components/nouiseslider.css";
+@import "components/pic-date.css";
+@import "components/swiper.css";
+@import "components/accordion.css";
+@import "components/alert.css";
+
+/* forms */
+@import "forms/inputform.css";
+@import "forms/touchspin.css";
+
+/* pages */
+@import "pages/index.css";
+@import "pages/icon-box.css";
+@import "pages/image-box.css";
+@import "pages/blog.css";
+@import "pages/shop.css";
+@import "pages/blog-details.css";
+@import "pages/team.css";
+@import "pages/testimonial.css";
+@import "pages/advertisement.css";
+@import "pages/testimonial.css";
+@import "pages/error-404.css";
+@import "pages/underconstruction.css";
+
+
+
+
+
+
+

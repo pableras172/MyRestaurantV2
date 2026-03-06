@@ -1,0 +1,36 @@
+/* Testimonial css */
+.testimonial-one-thumb.swiper {
+    width: 100%;
+    height: 452px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-1px);
+}
+.testimonial-one-thumb .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    height: calc(100% / 2) !important;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.testimonial-one-thumb .swiper-slide.swiper-slide-thumb-active {
+    padding: 10px;
+}
+.testimonial-one-thumb .swiper-slide img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+@screen max-lg {
+    .testimonial-one-thumb.swiper {
+        transform: translateX(0);
+    }
+}
+@screen max-sm {
+    .testimonial-one-thumb.swiper {
+        height: 250px;
+   }
+}

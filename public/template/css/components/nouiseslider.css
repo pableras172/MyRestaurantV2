@@ -1,0 +1,90 @@
+/* Noiuseslider */
+.range-slider .noUi-target {
+    background: #d3d3d3;
+    border-radius: 4px;
+    border: 0;
+    box-shadow: none;
+    position: relative;
+}
+.range-slider .noUi-target.noUi-horizontal {
+    height: 8px;
+}
+.range-slider .noUi-target .noUi-base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.range-slider .noUi-target .noUi-base .noUi-connects {
+    overflow: hidden;
+    z-index: 0;
+    border-radius: 3px;
+}
+.range-slider .noUi-target .noUi-base .noUi-connects .noUi-connect {
+    background: var(--primary);
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 0;
+    transform-style: flat;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 0;
+    transform-style: flat;
+    height: 0;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    background-color: #fff;
+    box-shadow: none;
+    top: -5px;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle:after, .range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle:before {
+    display: none;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle .noUi-touch-area {
+    height: 100%;
+    width: 100%;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle.noUi-handle-lower .noUi-tooltip {
+    background: #000;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle .noUi-tooltip {
+    border: 0px;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 2px 5px;
+    bottom: 30px;
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle .noUi-tooltip:after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    width: 10px;
+    height: 10px;
+    bottom: -11px;
+    margin-left: -4px;
+    left: 50%;
+    transform: rotate(45deg) translate(-50%, -50%);
+}
+.range-slider .noUi-target .noUi-base .noUi-origin .noUi-handle .noUi-horizontal .noUi-tooltip {
+    transform: translate(-50%, 0);
+    left: 50%;
+    bottom: 120%;
+}
+/* Noiuseslider End */
