@@ -36,7 +36,6 @@ class AdministradorPanelProvider extends PanelProvider
             ])
             ->tenant(Restaurant::class, ownershipRelationship: 'restaurants')
             ->tenantRoutePrefix('restaurant')
-            ->domain(config('app.env') === 'production' ? '{tenant}.' . env('APP_DOMAIN') : null)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

@@ -14,10 +14,23 @@ class IdentifyPublicTenant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Intentar obtener el tenant del subdominio primero
-        $subdomain = $request->route('tenant');
+        $subdomain = null;
         
-        // Si no hay subdominio, intentar obtenerlo del slug en la URL (desarrollo local)
+        // 1. Intentar obtener del subdominio (bellaitalia.myrestaurant.pro)
+        $host = $request->getHost();
+        $baseDomain = config('app.domain');
+        
+        if ($baseDomain && str_contains($host, $baseDomain)) {
+            // Extraer subdominio: bellaitalia.myrestaurant.pro → bellaitalia
+            $subdomain = str_replace('.' . $baseDomain, '', $host);
+            
+            // Si es el dominio base sin subdominio, no buscar restaurante
+            if ($subdomain === $baseDomain || $subdomain === 'www') {
+                return $next($request);
+            }
+        }
+        
+        // 2. Si no hay subdominio, intentar obtener del slug en la URL (/bellaitalia)
         if (!$subdomain) {
             $subdomain = $request->route('restaurant');
         }
@@ -31,7 +44,7 @@ class IdentifyPublicTenant
             ->first();
 
         if (!$restaurant) {
-            abort(404, 'Restaurant not found');
+            abort(404, 'Restaurant not found: ' . $subdomain);
         }
 
         // Compartir el restaurante con todas las vistas

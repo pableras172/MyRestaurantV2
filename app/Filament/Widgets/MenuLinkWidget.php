@@ -20,13 +20,8 @@ class MenuLinkWidget extends Widget
             return null;
         }
         
-        // En producción usar subdominio, en local usar slug en URL
-        if (config('app.env') === 'production' && config('app.domain')) {
-            return 'https://' . $tenant->slug . '.' . config('app.domain');
-        }
-        
-        // En desarrollo local usar slug en la URL
-        return route('public.menu.index', ['restaurant' => $tenant->slug]);
+        // Usar el helper centralizado que ya maneja subdominios vs slug
+        return menu_url($tenant);
     }
 
     public function getRestaurantName(): ?string
