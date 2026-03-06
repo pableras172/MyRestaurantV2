@@ -17,8 +17,15 @@ class ValidateSubdomain
     {
         $baseDomain = config('app.domain');
         
+        \Log::info('ValidateSubdomain - Inicio', [
+            'host' => $request->getHost(),
+            'baseDomain' => $baseDomain,
+            'url' => $request->fullUrl()
+        ]);
+        
         // Si no hay dominio configurado, continuar (modo desarrollo local)
         if (!$baseDomain) {
+            \Log::info('ValidateSubdomain - Sin dominio configurado, permitiendo');
             return $next($request);
         }
         
@@ -26,6 +33,7 @@ class ValidateSubdomain
         
         // Si es el dominio base o www, permitir (son válidos)
         if ($host === $baseDomain || $host === 'www.' . $baseDomain) {
+            \Log::info('ValidateSubdomain - Dominio base válido');
             return $next($request);
         }
         
@@ -33,16 +41,27 @@ class ValidateSubdomain
         if (str_contains($host, $baseDomain)) {
             $subdomain = str_replace('.' . $baseDomain, '', $host);
             
+            \Log::info('ValidateSubdomain - Verificando subdominio', [
+                'subdomain' => $subdomain
+            ]);
+            
             // Buscar restaurante con ese slug
             $exists = Restaurant::where('slug', $subdomain)
                 ->where('is_active', true)
                 ->exists();
             
+            \Log::info('ValidateSubdomain - Resultado verificación', [
+                'subdomain' => $subdomain,
+                'exists' => $exists
+            ]);
+            
             if (!$exists) {
+                \Log::warning('ValidateSubdomain - Subdominio no existe, abortando 404');
                 abort(404, 'Restaurant not found');
             }
         }
         
+        \Log::info('ValidateSubdomain - Permitiendo request');
         return $next($request);
     }
 }

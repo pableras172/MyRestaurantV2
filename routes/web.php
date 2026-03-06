@@ -17,6 +17,11 @@ Route::get('/', function () {
     $baseDomain = config('app.domain');
     $host = request()->getHost();
     
+    \Log::info('Ruta / - Inicio', [
+        'host' => $host,
+        'baseDomain' => $baseDomain
+    ]);
+    
     // Si hay APP_DOMAIN configurado y NO es el dominio base, significa que es un subdominio
     if ($baseDomain && $host !== $baseDomain && $host !== 'www.' . $baseDomain) {
         // Es un subdominio, debe ser manejado por las rutas del restaurante
@@ -24,15 +29,22 @@ Route::get('/', function () {
         // Extraer el slug del subdominio
         $subdomain = str_replace('.' . $baseDomain, '', $host);
         
+        \Log::info('Ruta / - Es subdominio', [
+            'subdomain' => $subdomain
+        ]);
+        
         $restaurant = \App\Models\Restaurant::where('slug', $subdomain)
             ->where('is_active', true)
             ->first();
         
         if ($restaurant) {
+            \Log::info('Ruta / - Restaurante encontrado, mostrando menú');
             // Pasar al controlador en lugar de redirigir
             return app(\App\Http\Controllers\Public\MenuController::class)->index(request()->merge(['current_restaurant' => $restaurant]));
         }
     }
+    
+    \Log::info('Ruta / - Es dominio base, redirigiendo a primer restaurante');
     
     // Es el dominio base, redirigir al primer restaurante
     $restaurant = \App\Models\Restaurant::where('is_active', true)
@@ -42,10 +54,10 @@ Route::get('/', function () {
     if ($restaurant) {
         // Si APP_DOMAIN está configurado, usar subdominio
         if ($baseDomain) {
-            return redirect()->away(
-                (request()->secure() ? 'https://' : 'http://') . 
-                $restaurant->slug . '.' . $baseDomain
-            );
+            $redirectUrl = (request()->secure() ? 'https://' : 'http://') . 
+                $restaurant->slug . '.' . $baseDomain;
+            \Log::info('Ruta / - Redirigiendo a', ['url' => $redirectUrl]);
+            return redirect()->away($redirectUrl);
         }
         
         // Si no, usar slug en URL
