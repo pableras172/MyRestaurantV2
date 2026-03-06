@@ -14,17 +14,37 @@ Route::prefix('{restaurant:slug}')->middleware(IdentifyPublicTenant::class)->gro
 
 // Página de bienvenida para el dominio principal
 Route::get('/', function () {
-    // Redirigir al primer restaurante activo
+    $baseDomain = config('app.domain');
+    $host = request()->getHost();
+    
+    // Si hay APP_DOMAIN configurado y NO es el dominio base, significa que es un subdominio
+    if ($baseDomain && $host !== $baseDomain && $host !== 'www.' . $baseDomain) {
+        // Es un subdominio, debe ser manejado por las rutas del restaurante
+        // Si llegamos aquí, el middleware ValidateSubdomain ya validó que existe
+        // Extraer el slug del subdominio
+        $subdomain = str_replace('.' . $baseDomain, '', $host);
+        
+        $restaurant = \App\Models\Restaurant::where('slug', $subdomain)
+            ->where('is_active', true)
+            ->first();
+        
+        if ($restaurant) {
+            // Pasar al controlador en lugar de redirigir
+            return app(\App\Http\Controllers\Public\MenuController::class)->index(request()->merge(['current_restaurant' => $restaurant]));
+        }
+    }
+    
+    // Es el dominio base, redirigir al primer restaurante
     $restaurant = \App\Models\Restaurant::where('is_active', true)
         ->orderBy('created_at', 'asc')
         ->first();
     
     if ($restaurant) {
         // Si APP_DOMAIN está configurado, usar subdominio
-        if (config('app.domain')) {
+        if ($baseDomain) {
             return redirect()->away(
                 (request()->secure() ? 'https://' : 'http://') . 
-                $restaurant->slug . '.' . config('app.domain')
+                $restaurant->slug . '.' . $baseDomain
             );
         }
         
