@@ -9,10 +9,12 @@ class UrlHelper
      */
     public static function menuUrl($restaurant, array $params = []): string
     {
-        // En producción usar subdominio
-        if (config('app.env') === 'production' && config('app.domain')) {
+        $domain = config('app.domain');
+        
+        // Si APP_DOMAIN está configurado, usar subdominios
+        if ($domain) {
             $url = (request()->secure() ? 'https://' : 'http://') . 
-                   $restaurant->slug . '.' . config('app.domain');
+                   $restaurant->slug . '.' . $domain;
             
             // Agregar parámetros de query string
             if (!empty($params)) {
@@ -31,9 +33,11 @@ class UrlHelper
      */
     public static function categoryUrl($restaurant, $categoryId): string
     {
-        if (config('app.env') === 'production' && config('app.domain')) {
+        $domain = config('app.domain');
+        
+        if ($domain) {
             return (request()->secure() ? 'https://' : 'http://') . 
-                   $restaurant->slug . '.' . config('app.domain') . 
+                   $restaurant->slug . '.' . $domain . 
                    '/category/' . $categoryId;
         }
         
@@ -45,9 +49,11 @@ class UrlHelper
      */
     public static function productUrl($restaurant, $productId): string
     {
-        if (config('app.env') === 'production' && config('app.domain')) {
+        $domain = config('app.domain');
+        
+        if ($domain) {
             return (request()->secure() ? 'https://' : 'http://') . 
-                   $restaurant->slug . '.' . config('app.domain') . 
+                   $restaurant->slug . '.' . $domain . 
                    '/product/' . $productId;
         }
         
