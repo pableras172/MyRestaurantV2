@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Middleware global para validar subdominios antes de procesar rutas
+        $middleware->append(\App\Http\Middleware\ValidateSubdomain::class);
+        
         $middleware->alias([
             'identify.tenant' => \App\Http\Middleware\IdentifyPublicTenant::class,
         ]);
