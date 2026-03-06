@@ -14,13 +14,19 @@ class IdentifyPublicTenant
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $slug = $request->route('restaurant');
+        // Intentar obtener el tenant del subdominio primero
+        $subdomain = $request->route('tenant');
         
-        if (!$slug) {
+        // Si no hay subdominio, intentar obtenerlo del slug en la URL (desarrollo local)
+        if (!$subdomain) {
+            $subdomain = $request->route('restaurant');
+        }
+        
+        if (!$subdomain) {
             abort(404, 'Restaurant not found');
         }
 
-        $restaurant = Restaurant::where('slug', $slug)
+        $restaurant = Restaurant::where('slug', $subdomain)
             ->where('is_active', true)
             ->first();
 
