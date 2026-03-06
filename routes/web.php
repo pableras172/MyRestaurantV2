@@ -39,8 +39,11 @@ Route::get('/', function () {
         
         if ($restaurant) {
             \Log::info('Ruta / - Restaurante encontrado, mostrando menú');
-            // Pasar al controlador en lugar de redirigir
-            return app(\App\Http\Controllers\Public\MenuController::class)->index(request()->merge(['current_restaurant' => $restaurant]));
+            // Compartir el restaurante con las vistas
+            view()->share('restaurant', $restaurant);
+            // Pasar al controlador con ambos parámetros requeridos
+            return app(\App\Http\Controllers\Public\MenuController::class)
+                ->index(request()->merge(['current_restaurant' => $restaurant]), $subdomain);
         }
     }
     
