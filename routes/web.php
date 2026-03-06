@@ -14,5 +14,23 @@ Route::prefix('{restaurant:slug}')->middleware(IdentifyPublicTenant::class)->gro
 
 // Página de bienvenida para el dominio principal
 Route::get('/', function () {
+    // Redirigir al primer restaurante activo
+    $restaurant = \App\Models\Restaurant::where('is_active', true)
+        ->orderBy('created_at', 'asc')
+        ->first();
+    
+    if ($restaurant) {
+        // Si APP_DOMAIN está configurado, usar subdominio
+        if (config('app.domain')) {
+            return redirect()->away(
+                (request()->secure() ? 'https://' : 'http://') . 
+                $restaurant->slug . '.' . config('app.domain')
+            );
+        }
+        
+        // Si no, usar slug en URL
+        return redirect()->route('public.menu.index', ['restaurant' => $restaurant->slug]);
+    }
+    
     return view('welcome');
 });
