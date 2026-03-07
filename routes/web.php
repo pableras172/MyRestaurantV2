@@ -5,7 +5,7 @@ use App\Http\Middleware\IdentifyPublicTenant;
 use Illuminate\Support\Facades\Route;
 
 // Ruta para cambiar idioma (sin middleware, disponible globalmente)
-Route::post('/change-language', function () {
+Route::get('/change-language', function () {
     $locale = request()->input('locale', 'es');
     $redirect = request()->input('redirect', url('/'));
     

@@ -401,41 +401,27 @@
     <script>
         // Language selector functionality
         function changeLanguage(lang) {
-            // Crear un formulario para hacer POST y cambiar el idioma
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = '/change-language';
-            
-            const csrfInput = document.createElement('input');
-            csrfInput.type = 'hidden';
-            csrfInput.name = '_token';
-            csrfInput.value = '{{ csrf_token() }}';
-            
-            const langInput = document.createElement('input');
-            langInput.type = 'hidden';
-            langInput.name = 'locale';
-            langInput.value = lang;
-            
-            const redirectInput = document.createElement('input');
-            redirectInput.type = 'hidden';
-            redirectInput.name = 'redirect';
-            redirectInput.value = window.location.href;
-            
-            form.appendChild(csrfInput);
-            form.appendChild(langInput);
-            form.appendChild(redirectInput);
-            
-            document.body.appendChild(form);
-            form.submit();
+            const currentUrl = encodeURIComponent(window.location.href);
+            window.location.href = '/change-language?locale=' + lang + '&redirect=' + currentUrl;
         }
 
-        // Event listeners para ambos selectores
-        document.getElementById('language-selector-mobile')?.addEventListener('change', function() {
-            changeLanguage(this.value);
-        });
-
-        document.getElementById('language-selector-desktop')?.addEventListener('change', function() {
-            changeLanguage(this.value);
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Event listeners para ambos selectores
+            const mobileLangSelector = document.getElementById('language-selector-mobile');
+            const desktopLangSelector = document.getElementById('language-selector-desktop');
+            
+            if (mobileLangSelector) {
+                mobileLangSelector.addEventListener('change', function() {
+                    changeLanguage(this.value);
+                });
+            }
+            
+            if (desktopLangSelector) {
+                desktopLangSelector.addEventListener('change', function() {
+                    changeLanguage(this.value);
+                });
+            }
         });
 
         function shareRestaurant(event) {
