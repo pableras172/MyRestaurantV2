@@ -38,8 +38,7 @@ Route::get('/', function () {
     $locale = request()->input('locale', 'es');
     if (in_array($locale, ['es', 'ca', 'en'])) {
         \Log::info('CWEB -> ambio de idioma', [
-            'locale' => $locale,
-            'redirect' => $redirect
+            'locale' => $locale,            
         ]);
         session(['locale' => $locale]);
         app()->setLocale($locale);
