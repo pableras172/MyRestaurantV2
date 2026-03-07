@@ -12,7 +12,7 @@ Route::get('/change-language', function () {
     
     // Validar que el idioma sea uno de los soportados
     if (in_array($locale, ['es', 'ca', 'en'])) {
-        \Log::info('Cambio de idioma', [
+        \Log::info('CWEB -> ambio de idioma', [
             'locale' => $locale,
             'redirect' => $redirect
         ]);
