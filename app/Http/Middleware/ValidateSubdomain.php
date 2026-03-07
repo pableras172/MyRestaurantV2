@@ -22,7 +22,22 @@ class ValidateSubdomain
             'baseDomain' => $baseDomain,
             'url' => $request->fullUrl(),
             'path' => $request->path()
-        ]);        
+        ]);    
+        
+        if(session('locale') && session('locale') !== app()->getLocale()) {
+            \Log::info('ValidateSubdomain - Idioma en sesión', [
+                'locale' => session('locale')
+            ]);
+            app()->setLocale(session('locale'));
+        }
+
+        \Log::info('ValidateSubdomain2 - Idioma -> ' . app()->getLocale());
+        \Log::info('ValidateSubdomain2 - Inicio', [
+            'host' => $request->getHost(),
+            'baseDomain' => $baseDomain,
+            'url' => $request->fullUrl(),
+            'path' => $request->path()
+        ]); 
        
         // Si no hay dominio configurado, continuar (modo desarrollo local)
         if (!$baseDomain) {
