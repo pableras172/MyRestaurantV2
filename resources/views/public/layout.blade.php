@@ -95,6 +95,7 @@
                     <div class="lg:hidden flex items-center h-[64px] float-left ml-4">
                         <div class="relative">
                             <h1 class="text-2xl font-bold text-red-600">{{ app()->getLocale() }}</h1>
+                            <h1 class="text-2xl font-bold text-red-600">{{ session('locale') }}</h1>
                             <select id="language-selector-mobile"
                             onchange="changeLanguage(this.value)"
                                 class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors">
@@ -125,6 +126,7 @@
                                 <li class="inline-block">
                                     <div class="relative">
                                         <h1 class="text-2xl font-bold text-red-600">{{ app()->getLocale() }}</h1>
+                                        <h1 class="text-2xl font-bold text-red-600">{{ session('locale') }}</h1>
                                         <select id="language-selector-desktop"
                                             class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 h-[45px] text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors shadow-[0_10px_10px_0_rgba(0,0,0,0.1)]"
                                             onchange="changeLanguage(this.value)">

@@ -22,15 +22,8 @@ class ValidateSubdomain
             'baseDomain' => $baseDomain,
             'url' => $request->fullUrl(),
             'path' => $request->path()
-        ]);
-        
-        // Permitir rutas específicas sin validación (como cambio de idioma)
-        $allowedPaths = ['change-language'];
-        if (in_array($request->path(), $allowedPaths)) {
-            \Log::info('ValidateSubdomain - Ruta permitida sin validación: ' . $request->path());
-            return $next($request);
-        }
-        
+        ]);        
+       
         // Si no hay dominio configurado, continuar (modo desarrollo local)
         if (!$baseDomain) {
             \Log::info('ValidateSubdomain - Sin dominio configurado, permitiendo');
