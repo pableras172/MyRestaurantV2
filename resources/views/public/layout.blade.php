@@ -411,16 +411,19 @@ console.log('DOM completamente cargado, inicializando selectores de idioma y eve
 
             // Event listeners para ambos selectores
             const mobileLangSelector = document.getElementById('language-selector-mobile');
+            console.log('Selector de idioma móvil:', mobileLangSelector);
             const desktopLangSelector = document.getElementById('language-selector-desktop');
-
+console.log('Selector de idioma de escritorio:', desktopLangSelector);
             if (mobileLangSelector) {
                 mobileLangSelector.addEventListener('change', function() {
+                    console.log('Idioma seleccionado (móvil):', this.value);
                     changeLanguage(this.value);
                 });
             }
 
             if (desktopLangSelector) {
                 desktopLangSelector.addEventListener('change', function() {
+                    console.log('Idioma seleccionado (móvil):', this.value);
                     changeLanguage(this.value);
                 });
             }
