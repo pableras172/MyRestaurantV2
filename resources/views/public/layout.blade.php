@@ -407,7 +407,7 @@
         // Esperar a que el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', function() {
 
-
+console.log('DOM completamente cargado, inicializando selectores de idioma y eventos de compartir.');
 
             // Event listeners para ambos selectores
             const mobileLangSelector = document.getElementById('language-selector-mobile');
