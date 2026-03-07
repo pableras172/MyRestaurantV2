@@ -95,6 +95,7 @@
                     <div class="lg:hidden flex items-center h-[64px] float-left ml-4">
                         <div class="relative">
                             <select id="language-selector-mobile"
+                            onchange="changeLanguage(this.value)"
                                 class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors">
                                 <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>ES</option>
                                 <option value="ca" {{ app()->getLocale() == 'ca' ? 'selected' : '' }}>CA</option>
@@ -121,7 +122,8 @@
                                 <li class="inline-block">
                                     <div class="relative">
                                         <select id="language-selector-desktop"
-                                            class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 h-[45px] text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors shadow-[0_10px_10px_0_rgba(0,0,0,0.1)]">
+                                            class="appearance-none bg-white border border-gray-300 rounded-md px-3 py-2 pr-8 h-[45px] text-sm font-medium cursor-pointer hover:border-primary focus:outline-none focus:border-primary transition-colors shadow-[0_10px_10px_0_rgba(0,0,0,0.1)]"
+                                            onchange="changeLanguage(this.value)">
                                             <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>
                                                 🇪🇸 Español</option>
                                             <option value="ca" {{ app()->getLocale() == 'ca' ? 'selected' : '' }}>
@@ -404,30 +406,7 @@
     <script src="{{ asset('template/js/dznav-init.js') }}"></script>
 
     <script>
-        // Esperar a que el DOM esté completamente cargado
-        document.addEventListener('DOMContentLoaded', function() {
-
-console.log('DOM completamente cargado, inicializando selectores de idioma y eventos de compartir.');
-
-            // Event listeners para ambos selectores
-            const mobileLangSelector = document.getElementById('language-selector-mobile');
-            console.log('Selector de idioma móvil:', mobileLangSelector);
-            const desktopLangSelector = document.getElementById('language-selector-desktop');
-console.log('Selector de idioma de escritorio:', desktopLangSelector);
-            if (mobileLangSelector) {
-                mobileLangSelector.addEventListener('change', function() {
-                    console.log('Idioma seleccionado (móvil):', this.value);
-                    changeLanguage(this.value);
-                });
-            }
-
-            if (desktopLangSelector) {
-                desktopLangSelector.addEventListener('change', function() {
-                    console.log('Idioma seleccionado (móvil):', this.value);
-                    changeLanguage(this.value);
-                });
-            }
-        });
+       
 
         function shareRestaurant(event) {
             event.preventDefault();
