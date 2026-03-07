@@ -426,12 +426,6 @@
             }
         });
 
-        // Language selector functionality
-        function changeLanguage(lang) {
-            const currentUrl = encodeURIComponent(window.location.href);
-            window.location.href = '/change-language?locale=' + lang + '&redirect=' + currentUrl;
-        }
-
         function shareRestaurant(event) {
             event.preventDefault();
 
@@ -458,6 +452,12 @@
                         prompt('Copia este enlace:', window.location.href);
                     });
             }
+        }
+
+        // Language selector functionality
+        function changeLanguage(lang) {
+            const currentUrl = encodeURIComponent(window.location.href);
+            window.location.href = '/change-language?locale=' + lang + '&redirect=' + currentUrl;
         }
 
         // Mantener el header siempre fijo
