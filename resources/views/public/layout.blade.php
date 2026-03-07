@@ -407,12 +407,8 @@
         // Esperar a que el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', function() {
 
-            // Language selector functionality
-            function changeLanguage(lang) {
-                const currentUrl = encodeURIComponent(window.location.href);
-                window.location.href = '/change-language?locale=' + lang + '&redirect=' + currentUrl;
-            }
-            
+
+
             // Event listeners para ambos selectores
             const mobileLangSelector = document.getElementById('language-selector-mobile');
             const desktopLangSelector = document.getElementById('language-selector-desktop');
@@ -429,6 +425,12 @@
                 });
             }
         });
+
+        // Language selector functionality
+        function changeLanguage(lang) {
+            const currentUrl = encodeURIComponent(window.location.href);
+            window.location.href = '/change-language?locale=' + lang + '&redirect=' + currentUrl;
+        }
 
         function shareRestaurant(event) {
             event.preventDefault();
