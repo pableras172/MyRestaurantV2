@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 // Ruta para cambiar idioma (sin middleware, disponible globalmente)
 Route::get('/change-language', function () {
+
     $locale = request()->input('locale', 'es');
     $redirect = request()->input('redirect', url('/'));
     
@@ -16,6 +17,7 @@ Route::get('/change-language', function () {
             'redirect' => $redirect
         ]);
         session(['locale' => $locale]);
+        app()->setLocale($locale);
     }
     
     return redirect($redirect);
