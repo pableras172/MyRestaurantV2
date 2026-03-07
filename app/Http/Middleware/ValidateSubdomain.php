@@ -16,7 +16,7 @@ class ValidateSubdomain
     public function handle(Request $request, Closure $next): Response
     {
         $baseDomain = config('app.domain');
-        
+        \Log::info('ValidateSubdomain - Idioma -> ' . app()->getLocale());
         \Log::info('ValidateSubdomain - Inicio', [
             'host' => $request->getHost(),
             'baseDomain' => $baseDomain,
